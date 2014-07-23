@@ -1,6 +1,8 @@
 #!/bin/bash
+set -x 
 
-cd /tmp/
-/usr/sbin/debootstrap wheezy /tmp/wheezy 
-/bin/tar --directory=/tmp/wheezy --create . | /usr/bin/docker import - deliverous/wheezy
-docker push deliverous/wheezy
+TGZ=debian.tgz
+sudo debootstrap --variant=minbase wheezy wheezy
+sudo tar -cz  -C wheezy --numeric-owner . > $TGZ
+
+docker build -t deliverous/wheezy .
