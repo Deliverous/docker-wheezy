@@ -1,2 +1,2 @@
-FROM scrach
+FROM scratch
 ADD debian.tgz /
