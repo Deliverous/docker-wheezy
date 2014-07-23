@@ -1,5 +1,4 @@
 #!/bin/bash
-set -x 
 
 TGZ=debian.tgz
 if [ ! -f $TGZ ]; then
@@ -8,4 +7,4 @@ if [ ! -f $TGZ ]; then
     sudo rm -rf wheezy
 fi
 
-docker build -t deliverous/wheezy .
+docker build --no-cache=true -t deliverous/wheezy .
